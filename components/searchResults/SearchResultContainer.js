@@ -1,12 +1,16 @@
+import { useState } from "react";
 import styles from "../../styles/Home.module.scss";
 
 const SearchResultContainer = () => {
+  const [searchText, setSearchText] = useState("Otherside Picnic");
   return (
     <div className={`col-6 ${styles.searchBarWrapper}`}>
       <input
         type="text"
         class={styles.searchBar}
         placeholder="Ex. Mieruko-chan"
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
       ></input>
       <svg
         xmlns="http://www.w3.org/2000/svg"
