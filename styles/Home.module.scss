@@ -4,30 +4,9 @@
 
 .searchContainer {
   top: 30%;
+  background-color: var(--main-background);
 
   > h1 {
     height: 10vh;
-  }
-}
-
-.searchBar {
-  width: calc(100% - 16px);
-  padding: 5px 0;
-  border: none;
-
-  &:focus-visible {
-    outline: unset;
-  }
-}
-
-.searchBarWrapper {
-  border: 1px solid var(--main-border-color);
-  border-radius: 10px;
-
-  &:hover,
-  &:focus-visible,
-  &:focus-within {
-    border: 1px solid var(--main-nav-selected);
-    box-shadow: 2px 3px var(--main-nav-selected);
   }
 }

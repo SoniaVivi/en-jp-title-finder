@@ -1,7 +1,6 @@
 import styles from "../styles/Home.module.scss";
-import SearchResultContainer from "../components/searchResults/SearchResultContainer";
+import SearchBar from "../components/searchBar/SearchBar";
 import localFont from "@next/font/local";
-import ResultsContainer from "../components/searchResults/ResultsContainer";
 
 const exoFont = localFont({ src: "../fonts/exo-regular.otf" });
 
@@ -16,11 +15,7 @@ export default function Home() {
           English to Japanese Title Converter
         </h1>
         <div className="col-3"></div>
-        <div className="col-3"></div>
-        <SearchResultContainer />
-        <div className="col-3"></div>
-        <ResultsContainer />
-        <div className="col-3"></div>
+        <SearchBar />
       </div>
     </div>
   );
