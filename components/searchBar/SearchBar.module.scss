@@ -1,7 +1,10 @@
-.searchBar {
+.searchInput {
   width: calc(100% - 16px);
+  height: 50px;
   padding: 5px 0;
+  font-size: 1.5rem;
   border: none;
+  background-color: var(--main-foreground);
 
   &:focus-visible {
     outline: unset;
@@ -10,12 +13,63 @@
 
 .searchBarWrapper {
   border: 1px solid var(--main-border-color);
-  border-radius: 10px;
+  border-radius: var(--main-border-radius);
+  background-color: var(--main-foreground);
 
   &:hover,
   &:focus-visible,
   &:focus-within {
     border: 1px solid var(--main-nav-selected);
-    box-shadow: 2px 3px var(--main-nav-selected);
   }
+
+  &:hover:not(:focus-visible, :focus-within) {
+    box-shadow: var(--main-shadow) var(--main-nav-selected);
+  }
+
+  &:focus-visible,
+  &:focus-within {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.resultsContainer {
+  border: var(--main-border);
+  border-top: none;
+  border-radius: var(--main-border-radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  list-style-type: none;
+  background-color: var(--main-foreground);
+
+  > li:not(:last-child) {
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 80%;
+      height: 1px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      background-color: var(--main-border-color);
+    }
+  }
+
+  &.active {
+    border-color: var(--main-nav-selected);
+  }
+}
+
+.volumes,
+.chapters {
+  font-size: 0.8rem;
+}
+
+.volumes {
+  border-right: var(--main-border);
+}
+
+.cover {
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
 }

@@ -1,5 +1,6 @@
 :root {
-  --main-background: #fdfdfd;
+  --main-background: #f5f5f5;
+  --main-foreground: #ffffff;
   --main-border-color: #edeff1;
   --main-hint-background: rgba(0, 0, 0, 0.8);
   --main-hover: rgba(85, 205, 252, 0.4);
@@ -7,9 +8,12 @@
   --main-modal-backdrop-color: rgba(0, 0, 0, 0.5);
   --main-nav-border: #cccccc;
   --main-nav-selected: rgba(85, 205, 252, 0.226);
-  --main-post-color: #ffffff;
   --main-tag-color: #e4ffe1;
   --main-tag-text-color: #000000;
+  --main-border-radius: 10px;
+  --main-border: 1px solid var(--main-border-color);
+  --main-shadow: 4px 3px 3px;
+  --main-button-transition-time: 0.1s;
 }
 
 html,
@@ -32,10 +36,28 @@ a {
 
 * {
   box-sizing: border-box;
+  // outline: 1px solid #f33;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.main-button {
+  height: fit-content;
+  margin-bottom: 8px;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  background-color: var(--main-foreground);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  transition: all var(--main-button-transition-time);
+
+  &:active {
+    border-color: var(--main-nav-selected);
+    background-color: var(--main-nav-selected);
+    translate: 2px 2px;
+    box-shadow: 0 0 0 rgba(#fff, 0);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

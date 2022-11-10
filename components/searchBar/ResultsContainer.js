@@ -1,7 +1,8 @@
 import { useGetWorkFromTitleQuery } from "../aniListApi";
 import SearchResult from "./SearchResult";
+import styles from "./SearchBar.module.scss";
 
-const ResultsContainer = () => {
+const ResultsContainer = (props) => {
   // PLACEHOLDER VALUES
   // MODIFY LATER FOR CORRECT FUNCTIONALITY
   const workData = useGetWorkFromTitleQuery(
@@ -13,7 +14,12 @@ const ResultsContainer = () => {
   );
 
   return (
-    <ul className="col-6">
+    <ul
+      className={`col-8 ${styles.resultsContainer} ${
+        props.isActive ? styles.active : ""
+      }`}
+    >
+      <SearchResult />
       <SearchResult />
     </ul>
   );

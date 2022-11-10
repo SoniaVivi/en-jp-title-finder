@@ -10,11 +10,11 @@ export default function Home() {
       className={`container-lg min-vh-100 position-relative ${styles.searchWrapper}`}
     >
       <div className={`${styles.searchContainer} row position-absolute w-100`}>
-        <div className="col-3"></div>
-        <h1 className={`col-6 ${exoFont.className}`}>
+        <div className="col-2"></div>
+        <h1 className={`col-8 ${exoFont.className}`}>
           English to Japanese Title Converter
         </h1>
-        <div className="col-3"></div>
+        <div className="col-2"></div>
         <SearchBar />
       </div>
     </div>
