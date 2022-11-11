@@ -1,16 +1,24 @@
 import { useGetWorkFromTitleQuery } from "../aniListApi";
 import SearchResult from "./SearchResult";
 import styles from "./SearchBar.module.scss";
+import { useMemo } from "react";
 
 const ResultsContainer = (props) => {
-  // PLACEHOLDER VALUES
-  // MODIFY LATER FOR CORRECT FUNCTIONALITY
-  const workData = useGetWorkFromTitleQuery(
+  const { workData } = useGetWorkFromTitleQuery(
     {
       title: "Otherside",
       pageNumber: 0,
     },
-    { selectFromResult: (response) => ({ ...response?.data?.ids }), skip: true }
+    {
+      selectFromResult: (response) => ({ workData: response?.data?.entities }),
+      // MODIFY LINE BELOW TO FETCH DATA
+      skip: true,
+    }
+  );
+
+  const workEntities = useMemo(
+    () => (workData ? Object.values(workData) : []),
+    [workData]
   );
 
   return (
@@ -19,8 +27,11 @@ const ResultsContainer = (props) => {
         props.isActive ? styles.active : ""
       }`}
     >
-      <SearchResult />
-      <SearchResult />
+      {workEntities.length != 0
+        ? workEntities.map((data) => (
+            <SearchResult key={data.id} workData={data} />
+          ))
+        : null}
     </ul>
   );
 };

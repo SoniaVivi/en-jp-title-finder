@@ -21,7 +21,7 @@ export const aniListApi = createApi({
         method: "POST",
         body: {
           query: `query getMangaFromName($search: String, $pageNumber: Int) {
-          Page(page: $pageNumber, perPage: 25) {
+          Page(page: $pageNumber, perPage: 15) {
             media (search: $search) {
               id
               status
@@ -59,7 +59,7 @@ export const aniListApi = createApi({
           responseData.data.Page.media.map((data) => ({
             ...data,
             ...data.title,
-            cover: data.coverImage,
+            cover: data.coverImage.medium,
             title: null,
             coverImage: null,
           }))
