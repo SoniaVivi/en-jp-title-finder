@@ -26,7 +26,7 @@ const SearchResult = (props) => {
             Volumes {data.volumes || "?"}
           </span>
           <span className={`col-6 text-center ${styles.chapters}`}>
-            {data.chapters || "?"}
+            Chapters {data.chapters || "?"}
           </span>
         </div>
       </div>

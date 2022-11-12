@@ -6,13 +6,12 @@ import { useMemo } from "react";
 const ResultsContainer = (props) => {
   const { workData } = useGetWorkFromTitleQuery(
     {
-      title: "Otherside",
-      pageNumber: 0,
+      title: props.workName,
+      pageNumber: props.pageNumber,
     },
     {
       selectFromResult: (response) => ({ workData: response?.data?.entities }),
-      // MODIFY LINE BELOW TO FETCH DATA
-      skip: true,
+      skip: props.workName <= 0,
     }
   );
 

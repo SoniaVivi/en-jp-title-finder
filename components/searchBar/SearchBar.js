@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./SearchBar.module.scss";
 import ResultsContainer from "./ResultsContainer";
 
 const SearchBar = () => {
-  const [searchText, setSearchText] = useState("Lorem ipsum");
   const [showBottomBorder, setShowBottomBorder] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const searchFieldRef = useRef(null);
 
   return (
     <>
       <div className="col-2"></div>
-      <div className={`col-8 ${styles.searchBarWrapper}`}>
+      <div
+        className={`col-8 ${styles.searchBarWrapper} ${
+          searchText.length > 0 ? styles.noBottom : ""
+        }`}
+      >
         <input
           type="text"
-          class={styles.searchInput}
+          defaultValue=""
+          className={styles.searchInput}
           placeholder="Ex. Mieruko-chan"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          ref={searchFieldRef}
+          onKeyDown={(e) =>
+            e.code == "Enter" ? setSearchText(searchFieldRef.current.value) : ""
+          }
           onFocus={() => setShowBottomBorder(true)}
           onBlur={() => setShowBottomBorder(false)}
         ></input>
@@ -25,6 +33,7 @@ const SearchBar = () => {
           height="16"
           fill="currentColor"
           className="bi bi-search clickable"
+          onClick={() => setSearchText(searchFieldRef.current.value)}
           viewBox="0 0 16 16"
         >
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -32,7 +41,13 @@ const SearchBar = () => {
       </div>
       <div className="col-2"></div>
       <div className="col-2"></div>
-      <ResultsContainer isActive={showBottomBorder} />
+      {searchText.length > 0 ? (
+        <ResultsContainer
+          isActive={showBottomBorder}
+          workName={searchText}
+          pageNumber={0}
+        />
+      ) : null}
       <div className="col-2"></div>
     </>
   );
