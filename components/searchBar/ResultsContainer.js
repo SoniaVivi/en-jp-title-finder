@@ -4,20 +4,18 @@ import styles from "./SearchBar.module.scss";
 import { useMemo } from "react";
 
 const ResultsContainer = (props) => {
-  const { workData } = useGetWorkFromTitleQuery(
+  const { workData, workIds } = useGetWorkFromTitleQuery(
     {
       title: props.workName,
       pageNumber: props.pageNumber,
     },
     {
-      selectFromResult: (response) => ({ workData: response?.data?.entities }),
+      selectFromResult: (response) => ({
+        workIds: response?.data?.ids,
+        workData: response?.data?.entities,
+      }),
       skip: props.workName <= 0,
     }
-  );
-
-  const workEntities = useMemo(
-    () => (workData ? Object.values(workData) : []),
-    [workData]
   );
 
   return (
@@ -26,10 +24,8 @@ const ResultsContainer = (props) => {
         props.isActive ? styles.active : ""
       }`}
     >
-      {workEntities.length != 0
-        ? workEntities.map((data) => (
-            <SearchResult key={data.id} workData={data} />
-          ))
+      {workIds && workIds.length != 0
+        ? workIds.map((id) => <SearchResult key={id} workData={workData[id]} />)
         : null}
     </ul>
   );

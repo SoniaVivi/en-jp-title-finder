@@ -1,7 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { createEntityAdapter } from "@reduxjs/toolkit";
 
-const workAdapter = createEntityAdapter();
+const workAdapter = createEntityAdapter({
+  sortComparer: (a, b) => {
+    if (a.index < b.index) {
+      return -1;
+    } else if (a.index == b.index) {
+      return 0;
+    } else {
+      return 1;
+    }
+  },
+});
 const workInitialState = workAdapter.getInitialState();
 
 export const aniListApi = createApi({
@@ -56,12 +66,13 @@ export const aniListApi = createApi({
       transformResponse: (responseData) =>
         workAdapter.addMany(
           workInitialState,
-          responseData.data.Page.media.map((data) => ({
+          responseData.data.Page.media.map((data, i) => ({
             ...data,
             ...data.title,
             cover: data.coverImage.medium,
             title: null,
             coverImage: null,
+            index: i,
           }))
         ),
     }),
