@@ -55,9 +55,6 @@ export const aniListApi = createApi({
                 site
                 language
               }
-              tags {
-                name
-              }
               title {
                 native
                 romaji
