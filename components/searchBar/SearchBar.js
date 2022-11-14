@@ -42,11 +42,7 @@ const SearchBar = () => {
       <div className="col-2"></div>
       <div className="col-2"></div>
       {searchText.length > 0 ? (
-        <ResultsContainer
-          isActive={showBottomBorder}
-          workName={searchText}
-          pageNumber={0}
-        />
+        <ResultsContainer isActive={showBottomBorder} workName={searchText} />
       ) : null}
       <div className="col-2"></div>
     </>

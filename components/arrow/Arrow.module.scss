@@ -1,0 +1,31 @@
+.arrowContainer {
+  margin: 0 5px;
+  margin-top: 5px;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  background-color: var(--main-foreground);
+
+  &.left {
+    transform: rotate(90deg);
+  }
+
+  &.right {
+    transform: rotate(-90deg);
+  }
+
+  &.top {
+    transform: rotate(180deg);
+  }
+
+  &.rectangle {
+    border-radius: 0;
+  }
+}
+
+.arrow {
+  --size: 20px;
+  width: var(--size);
+  height: var(--size);
+  stroke: var(--main-text-color);
+  stroke-width: 0.6;
+}
