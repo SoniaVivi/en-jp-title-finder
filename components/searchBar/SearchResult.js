@@ -5,7 +5,10 @@ import styles from "./SearchBar.module.scss";
 const SearchResult = (props) => {
   const data = props.workData;
   const titles = useMemo(
-    () => [data.native, data.romaji, data.english],
+    () =>
+      [data.native, data.romaji, data.english, ...data.synonyms].filter(
+        (title) => title && title.length > 0
+      ),
     [data]
   );
 
@@ -32,7 +35,7 @@ const SearchResult = (props) => {
       </div>
       <div className="col-9">
         <div className="col-12 row">
-          {titles.map((title) => (
+          {titles.map((title, i) => (
             <>
               <button
                 className="col-3 main-button"
@@ -40,7 +43,9 @@ const SearchResult = (props) => {
               >
                 Copy
               </button>
-              <span className="col-9">{title}</span>
+              <span className={`col-9${i == 0 ? " fw-semibold fs-5" : ""}`}>
+                {title}
+              </span>
             </>
           ))}
         </div>
