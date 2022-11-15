@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const ResultsContainer = (props) => {
   const [pageNumber, setPageNumber] = useState(1);
-  const { workData, workIds } = useGetWorkFromTitleQuery(
+  const { workData, workIds, isFetching } = useGetWorkFromTitleQuery(
     {
       title: props.workName,
       pageNumber: pageNumber,
@@ -15,6 +15,7 @@ const ResultsContainer = (props) => {
       selectFromResult: (response) => ({
         workIds: response?.data?.ids,
         workData: response?.data?.entities,
+        isFetching: response.isFetching,
       }),
       skip: props.workName <= 0,
     }
@@ -54,6 +55,18 @@ const ResultsContainer = (props) => {
   );
 
   useEffect(() => setPageNumber(1), [props.workName]);
+
+  if (isFetching) {
+    return (
+      <ul
+        className={`col-8 ${styles.resultsContainer} ${
+          props.isActive ? styles.active : ""
+        } justify-content-center flex`}
+      >
+        <div className={styles.circle}></div>
+      </ul>
+    );
+  }
 
   return (
     <ul
