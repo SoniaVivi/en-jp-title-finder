@@ -14,8 +14,8 @@ const SearchResult = (props) => {
 
   return (
     <li className="row">
-      <div className="col-3 row">
-        <div>
+      <div className="col-12 col-sm-6 col-md-4 col-xl-3 row">
+        <div className="col-12 flex">
           <Image
             src={data.cover}
             alt="Work cover"
@@ -57,17 +57,21 @@ const SearchResult = (props) => {
           </a>
         </div>
       </div>
-      <div className="col-9">
+      <div className="col-12 col-sm-6 col-md-8 col-xl-9">
         <div className="col-12 row">
           {titles.map((title, i) => (
             <>
               <button
-                className="col-3 main-button"
+                className="col-3 col-sm-4 col-md-3 main-button"
                 onClick={() => navigator.clipboard.writeText(title)}
               >
                 Copy
               </button>
-              <span className={`col-9${i == 0 ? " fw-semibold fs-5" : ""}`}>
+              <span
+                className={`col-9 col-sm-8 col-md-9${
+                  i == 0 ? " fw-semibold fs-5" : ""
+                }`}
+              >
                 {title}
               </span>
             </>
