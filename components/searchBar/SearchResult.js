@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useMemo } from "react";
+import LinkSvg from "../svg/LinkSvg";
 import styles from "./SearchBar.module.scss";
 
 const SearchResult = (props) => {
@@ -40,21 +41,7 @@ const SearchResult = (props) => {
               rel="noreferrer"
             >
               AniList
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-                className="icon link"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                />
-              </svg>
+              <LinkSvg />
             </a>
             <div className="d-sm-block col-md-1"></div>
           </div>
@@ -90,7 +77,10 @@ const SearchResult = (props) => {
                     rel="noreferrer"
                   >
                     <span>{linkData.site}</span>
-                    <span> - {linkData.language}</span>
+                    {linkData.language ? (
+                      <span> - {linkData.language}</span>
+                    ) : null}{" "}
+                    <LinkSvg />
                   </a>
                   <div className="d-sm-block col-md-1"></div>
                 </>
@@ -99,6 +89,27 @@ const SearchResult = (props) => {
         </div>
       </div>
       <p className="col-12">{data.description}</p>
+      <div className="row col-12">
+        <div className="d-block col-1 col-sm-1"></div>
+        <a
+          href="https://learnnatively.com/"
+          className="main-button col-12 col-sm-4"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Natively <LinkSvg />
+        </a>
+        <div className="d-block col-1 col-sm-2"></div>
+        <a
+          href="https://jpdb.io/"
+          className="main-button col-12 col-sm-4"
+          target="_blank"
+          rel="noreferrer"
+        >
+          JPDB <LinkSvg />
+        </a>
+        <div className="d-block col-1 col-sm-1"></div>
+      </div>
     </li>
   );
 };
