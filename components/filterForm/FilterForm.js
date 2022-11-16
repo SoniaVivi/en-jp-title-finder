@@ -11,7 +11,7 @@ const FilterForm = (props) => {
       {props.options.map((option) => (
         <>
           <button
-            className={`col-12 col-md-4 col-lg-3 col-xl-2 main-button text-center ${
+            className={`col-12 col-sm-4 col-md-5 col-lg-3 col-xl-2 main-button text-center ${
               styles.option
             } ${selectedOptions.indexOf(option) != -1 ? styles.selected : ""}`}
             key={option}
@@ -28,7 +28,7 @@ const FilterForm = (props) => {
           >
             {props.displayFunc(option)}
           </button>
-          <div className="d-sm-block col-md-2 col-lg-1"></div>
+          <div className="d-sm-block col-sm-2 col-md-1 col-lg-1"></div>
         </>
       ))}
     </div>

@@ -24,37 +24,40 @@ const SearchResult = (props) => {
             className={styles.cover}
           />
         </div>
-        <div className="col-12 row">
-          <span className={`col-6 text-center ${styles.volumes}`}>
-            Volumes {data.volumes || "?"}
-          </span>
-          <span className={`col-6 text-center ${styles.chapters}`}>
-            Chapters {data.chapters || "?"}
-          </span>
-          <div className="col-1"></div>
-          <a
-            href={data.siteUrl}
-            className={`col-9 main-button text-center ${styles.aniListLink}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            AniList
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              className="icon link"
+        <div className="col-12">
+          <div className="row">
+            <span className={`col-6 text-center ${styles.volumes}`}>
+              Volumes {data.volumes || "?"}
+            </span>
+            <span className={`col-6 text-center ${styles.chapters}`}>
+              Chapters {data.chapters || "?"}
+            </span>
+            <div className="d-sm-block col-md-1"></div>
+            <a
+              href={data.siteUrl}
+              className={`col-12 col-md-9 main-button text-center ${styles.aniListLink}`}
+              target="_blank"
+              rel="noreferrer"
             >
-              <path
-                fill-rule="evenodd"
-                d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-              />
-              <path
-                fill-rule="evenodd"
-                d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-              />
-            </svg>
-          </a>
+              AniList
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                className="icon link"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                />
+              </svg>
+            </a>
+            <div className="d-sm-block col-md-1"></div>
+          </div>
         </div>
       </div>
       <div className="col-12 col-sm-6 col-md-8 col-xl-9">
@@ -82,14 +85,14 @@ const SearchResult = (props) => {
                   <a
                     href={linkData.url}
                     key={i}
-                    className="col-5 main-button"
+                    className="col-12 col-md-5 main-button"
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span>{linkData.site}</span>
                     <span> - {linkData.language}</span>
                   </a>
-                  <div className="col-1"></div>
+                  <div className="d-sm-block col-md-1"></div>
                 </>
               ))
             : null}
