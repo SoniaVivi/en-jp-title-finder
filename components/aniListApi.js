@@ -33,10 +33,8 @@ export const aniListApi = createApi({
           query: `query getMangaFromName($search: String, $pageNumber: Int) {
           Page(page: $pageNumber, perPage: 5) {
             pageInfo {
-               currentPage
                lastPage
                hasNextPage
-               perPage
             }
             media (search: $search${
               ", format_in: [" + workTypes.join(", ") + "]"
