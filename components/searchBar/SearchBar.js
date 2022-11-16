@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import styles from "./SearchBar.module.scss";
 import ResultsContainer from "./ResultsContainer";
 import FilterForm from "../filterForm/FilterForm";
+import useRandom from "../hooks/useRandom";
 
 const formatTypes = [
   "ALL",
@@ -19,6 +20,13 @@ const formatTypes = [
 const SearchBar = () => {
   const [showBottomBorder, setShowBottomBorder] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const exampleSearchText = useRandom([
+    "Mieruko-chan",
+    "Otherside Picnic",
+    "Zai x 10",
+    "Roaming The Apocalypse With My Shiba Inu",
+    "My Wish is To Fall in Love Until You Die",
+  ]);
   const searchFieldRef = useRef(null);
   const searchOptionsRef = useRef(null);
   const [searchOptions, setSearchOptions] = useState(formatTypes);
@@ -65,7 +73,7 @@ const SearchBar = () => {
           type="text"
           defaultValue=""
           className={styles.searchInput}
-          placeholder="Ex. Mieruko-chan"
+          placeholder={`Ex. ${exampleSearchText}`}
           ref={searchFieldRef}
           onKeyDown={(e) => (e.code == "Enter" ? onSearch() : "")}
           onFocus={() => setShowBottomBorder(true)}
