@@ -24,7 +24,7 @@ const ResultsContainer = (props) => {
   const modifyPageNumber = useMemo(
     () => (action) =>
       setPageNumber((value) => {
-        if (!workIds || workIds.length == 0) {
+        if (pageNumber == 1 && (!workIds || workIds.length == 0)) {
           return value;
         } else if (value > 1 && action == "decrement") {
           return value - 1;
@@ -37,7 +37,7 @@ const ResultsContainer = (props) => {
         }
         return value;
       }),
-    [workIds, workData]
+    [workIds, workData, pageNumber]
   );
 
   const decrementPage = useMemo(
@@ -75,19 +75,17 @@ const ResultsContainer = (props) => {
         props.isActive ? styles.active : ""
       }`}
     >
-      {workIds && workIds.length != 0 ? (
-        <>
-          <div className={`col-12 ${styles.pageButtonsContainer}`}>
-            <span>Page</span>
-            <Arrow direction="left" onClick={decrementPage} />
-            <span>{pageNumber}</span>
-            <Arrow direction="right" onClick={incrementPage} />
-          </div>
-          {workIds.map((id) => (
-            <SearchResult key={id} workData={workData[id]} />
-          ))}
-        </>
+      {pageNumber > 1 || (workIds && workIds.length != 0) ? (
+        <div className={`col-12 ${styles.pageButtonsContainer}`}>
+          <span>Page</span>
+          <Arrow direction="left" onClick={decrementPage} />
+          <span>{pageNumber}</span>
+          <Arrow direction="right" onClick={incrementPage} />
+        </div>
       ) : null}
+      {workIds && workIds.length != 0
+        ? workIds.map((id) => <SearchResult key={id} workData={workData[id]} />)
+        : null}
     </ul>
   );
 };
