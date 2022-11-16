@@ -11,7 +11,7 @@ export default function Home() {
     >
       <div className={`${styles.searchContainer} row position-absolute w-100`}>
         <div className="col-2"></div>
-        <h1 className={`col-8 ${exoFont.className}`}>
+        <h1 className={`col-8 ${exoFont.className} text-center `}>
           English to Japanese Title Converter
         </h1>
         <div className="col-2"></div>

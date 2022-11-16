@@ -26,7 +26,7 @@ export const aniListApi = createApi({
   }),
   endpoints: (builder) => ({
     getWorkFromTitle: builder.query({
-      query: ({ title, pageNumber }) => ({
+      query: ({ title, pageNumber, workTypes }) => ({
         url: "/",
         method: "POST",
         body: {
@@ -38,7 +38,9 @@ export const aniListApi = createApi({
                hasNextPage
                perPage
             }
-            media (search: $search) {
+            media (search: $search${
+              ", format_in: [" + workTypes.join(", ") + "]"
+            }) {
               id
               status
               description

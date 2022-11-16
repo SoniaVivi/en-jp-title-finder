@@ -1,0 +1,11 @@
+.option {
+  --border-thickness: 3px;
+  height: 36px;
+  border: var(--border-thickness) solid rgba(0, 0, 0, 0);
+  background-color: var(--main-foreground);
+
+  &.selected {
+    border: var(--border-thickness) solid var(--main-nav-selected);
+    background-color: var(--main-nav-selected);
+  }
+}

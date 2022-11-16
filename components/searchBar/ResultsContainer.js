@@ -10,6 +10,7 @@ const ResultsContainer = (props) => {
     {
       title: props.workName,
       pageNumber: pageNumber,
+      workTypes: props.workTypes,
     },
     {
       selectFromResult: (response) => ({

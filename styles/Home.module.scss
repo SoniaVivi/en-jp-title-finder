@@ -3,10 +3,10 @@
 }
 
 .searchContainer {
-  top: 30%;
+  top: 20vh;
   background-color: var(--main-background);
 
   > h1 {
-    height: 10vh;
+    min-height: 5vh;
   }
 }
