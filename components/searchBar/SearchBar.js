@@ -5,7 +5,6 @@ import FilterForm from "../filterForm/FilterForm";
 import useRandom from "../hooks/useRandom";
 
 const formatTypes = [
-  "ALL",
   "MANGA",
   "NOVEL",
   "ONE_SHOT",
@@ -33,10 +32,9 @@ const SearchBar = () => {
   const onSearch = () => {
     setSearchText(searchFieldRef.current.value);
     setSearchOptions(
-      (!searchOptionsRef.current || searchOptionsRef.current.length == 0
+      !searchOptionsRef.current || searchOptionsRef.current.length == 0
         ? formatTypes
-        : searchOptionsRef
-      ).filter((val) => val != "ALL")
+        : searchOptionsRef.current
     );
   };
 
@@ -45,20 +43,12 @@ const SearchBar = () => {
       <div className="col-2"></div>
       <FilterForm
         options={formatTypes}
-        onSelect={(selected, currentSelected, options) => {
-          if (selected != "ALL") {
-            return [...currentSelected, selected];
-          } else {
-            return [...options];
-          }
-        }}
-        onDeselect={(selected, currentSelected, options) => {
-          if (selected != "ALL") {
-            return currentSelected.filter((x) => x != selected && x != "ALL");
-          } else {
-            return [];
-          }
-        }}
+        onSelect={(selected, currentSelected) => [...currentSelected, selected]}
+        onDeselect={(selected, currentSelected) =>
+          currentSelected.filter((x) => x != selected && x != "ALL")
+        }
+        selectAll={() => [...formatTypes]}
+        deselectAll={() => []}
         setValue={(value) => (searchOptionsRef.current = value)}
         displayFunc={(text) => text.split("_").join(" ")}
       />
