@@ -1,21 +1,21 @@
-This project is intended to convert the english title of a manga, anime, or light novel to the japanese title.
+Finds alternative titles of a manga, anime, light novel and other relevant data.
 
-## Planned Features
+## Features
 
-- Provide the native, hiragana, and english title of all found works
+- Provides the native, romaji, english, and other titles of each entry
 
-- List number of volumes and chapters
+- Displays a copy to clipboard button for each title
 
-- Provide links to the raw media
+- Provides links to official sources
 
-- Display links to learnnatively and jpdb to reduce search lag
+- Provides buttons to quickly filter out format types
 
-- Button to copy the japanese title to the clipboard
+- Lists number of volumes and chapters
 
-## Running
+- Displays links to quickly access LearnNatively and JPDB for more verbose reference.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Running a local copy
+
+Installing dependencies: `yarn`
+
+Running: `yarn dev`
