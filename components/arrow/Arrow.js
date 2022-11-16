@@ -3,7 +3,7 @@ import styles from "./Arrow.module.scss";
 const Arrow = (props) => {
   return (
     <button
-      className={`${styles.arrowContainer} ${styles[props.direction]}`}
+      className={`arrow ${styles.arrowContainer} ${styles[props.direction]}`}
       onClick={props.onClick}
     >
       <svg

@@ -10,3 +10,20 @@
     min-height: 5vh;
   }
 }
+
+.goToTop {
+  bottom: 40px;
+  width: 90%;
+
+  svg {
+    --size: 30px;
+    width: var(--size);
+    height: var(--size);
+  }
+}
+
+@media (max-width: 575px) {
+  .searchContainer {
+    top: 5vh;
+  }
+}
