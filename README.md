@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/55420399/202320857-505fb344-af03-4e8a-a25f-61a0ea10066b.png" width="610" height="474"/>
+
 Finds alternative titles of a manga, anime, light novel and other relevant data.
 
 ## Features
